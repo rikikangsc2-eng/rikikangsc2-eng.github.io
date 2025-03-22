@@ -1,0 +1,63 @@
+<html>
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param) || "Nama 1";
+        }
+
+        function getRandomPercentage() {
+            return Math.floor(Math.random() * 10) * 10 + Math.floor(Math.random() * 10);
+        }
+
+        function getRandomResponse(percentage) {
+            const responses = {
+                10: ["Duh, kayaknya kurang nyambung nih...", "Hmmm, mungkin lebih cocok jadi temen aja?", "Banyak perbedaan yang bikin susah klik.", "Susah sih, tapi bukan berarti mustahil!", "Beda dunia banget!"],
+                20: ["Masih banyak perbedaan yang bikin sulit.", "Coba kenal lebih dalam, siapa tahu cocok?", "Mungkin perlu lebih banyak ngobrol bareng.", "Kayaknya ada gap yang lumayan kerasa.", "Masih bisa diperjuangkan kalau mau."],
+                30: ["Lumayan sih, tapi banyak tantangan.", "Ada potensi, tapi butuh usaha ekstra.", "Kadang nyambung, kadang enggak.", "Harus cari lebih banyak kesamaan.", "Bisa cocok kalau saling memahami."],
+                40: ["Gak buruk, tapi ada beberapa hambatan.", "Kalau dikembangin, bisa lebih baik!", "Banyak tantangan, tapi masih oke.", "Harus lebih sering ngobrol bareng.", "Ada kecocokan, tapi masih kurang stabil."],
+                50: ["Setengah-setengah nih!", "Kadang klik, kadang enggak.", "Bisa cocok kalau ada usaha.", "Masih perlu banyak kompromi.", "Hubungan ini 50:50, tergantung kalian!"],
+                60: ["Bisa jalan, tapi perlu usaha.", "Lumayan cocok, tapi tetap ada tantangan.", "Ada chemistry, tapi nggak selalu sejalan.", "Sering nyambung, tapi ada beda juga.", "Bisa banget, asal mau saling ngerti."],
+                70: ["Wah, cukup nyambung nih!", "Sering sefrekuensi, tapi ada tantangan.", "Cocok, cuma ada beberapa beda kecil.", "Udah cukup solid, tinggal dipoles.", "Potensial banget kalau saling jaga."],
+                80: ["Nyaris perfect, cuma ada sedikit beda.", "Hubungan ini kuat banget!", "Udah hampir sejalan di banyak hal.", "Nyaman banget kalau bareng.", "Salah satu pasangan ideal nih!"],
+                90: ["Super cocok! Tinggal jalanin aja.", "Sejalan banget di banyak aspek.", "Hampir nggak ada yang bikin sulit.", "Nyaman, seru, dan saling paham.", "Udah kayak soulmate beneran!"],
+                100: ["Perfect match! Saling melengkapi.", "Udah kayak ditakdirin bersama.", "Hubungan ini super kuat!", "Kalian kayak puzzle yang pas banget.", "Nggak ada celah buat ragu!"]
+            };
+
+            const key = Math.floor(percentage / 10) * 10;
+            return responses[key][Math.floor(Math.random() * responses[key].length)];
+        }
+
+        window.onload = function() {
+            const nama1 = getQueryParam("nama1");
+            const nama2 = getQueryParam("nama2");
+            const percentage = getRandomPercentage();
+            const response = getRandomResponse(percentage);
+
+            document.getElementById("nama1").innerText = nama1;
+            document.getElementById("nama2").innerText = nama2;
+            document.getElementById("percentage").innerText = percentage + "%";
+            document.getElementById("response").innerText = response;
+        };
+    </script>
+</head>
+<body class="bg-gray-800 flex items-center justify-center min-h-screen">
+    <div class="bg-gray-700 p-8 rounded-lg shadow-lg text-center text-white max-w-md mx-auto">
+        <h1 class="text-2xl font-bold mb-2">Cupid Meter</h1>
+        <p class="text-lg mb-4">Persentase kecocokan <span id="nama1" class="font-bold text-pink-400"></span> & <span id="nama2" class="font-bold text-pink-400"></span></p>
+        <div class="flex items-center justify-center mb-4">
+            <i class="fas fa-heart text-pink-500 text-6xl"></i>
+            <span id="percentage" class="text-6xl font-bold ml-4"></span>
+        </div>
+        <p id="response" class="text-sm"></p>
+    </div>
+</body>
+</html>
