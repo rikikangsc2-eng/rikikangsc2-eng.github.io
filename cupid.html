@@ -1,63 +1,134 @@
 <html>
 <head>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
-    <script>
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param) || "Nama 1";
-        }
-
-        function getRandomPercentage() {
-            return Math.floor(Math.random() * 10) * 10 + Math.floor(Math.random() * 10);
-        }
-
-        function getRandomResponse(percentage) {
-            const responses = {
-                10: ["Duh, kayaknya kurang nyambung nih...", "Hmmm, mungkin lebih cocok jadi temen aja?", "Banyak perbedaan yang bikin susah klik.", "Susah sih, tapi bukan berarti mustahil!", "Beda dunia banget!"],
-                20: ["Masih banyak perbedaan yang bikin sulit.", "Coba kenal lebih dalam, siapa tahu cocok?", "Mungkin perlu lebih banyak ngobrol bareng.", "Kayaknya ada gap yang lumayan kerasa.", "Masih bisa diperjuangkan kalau mau."],
-                30: ["Lumayan sih, tapi banyak tantangan.", "Ada potensi, tapi butuh usaha ekstra.", "Kadang nyambung, kadang enggak.", "Harus cari lebih banyak kesamaan.", "Bisa cocok kalau saling memahami."],
-                40: ["Gak buruk, tapi ada beberapa hambatan.", "Kalau dikembangin, bisa lebih baik!", "Banyak tantangan, tapi masih oke.", "Harus lebih sering ngobrol bareng.", "Ada kecocokan, tapi masih kurang stabil."],
-                50: ["Setengah-setengah nih!", "Kadang klik, kadang enggak.", "Bisa cocok kalau ada usaha.", "Masih perlu banyak kompromi.", "Hubungan ini 50:50, tergantung kalian!"],
-                60: ["Bisa jalan, tapi perlu usaha.", "Lumayan cocok, tapi tetap ada tantangan.", "Ada chemistry, tapi nggak selalu sejalan.", "Sering nyambung, tapi ada beda juga.", "Bisa banget, asal mau saling ngerti."],
-                70: ["Wah, cukup nyambung nih!", "Sering sefrekuensi, tapi ada tantangan.", "Cocok, cuma ada beberapa beda kecil.", "Udah cukup solid, tinggal dipoles.", "Potensial banget kalau saling jaga."],
-                80: ["Nyaris perfect, cuma ada sedikit beda.", "Hubungan ini kuat banget!", "Udah hampir sejalan di banyak hal.", "Nyaman banget kalau bareng.", "Salah satu pasangan ideal nih!"],
-                90: ["Super cocok! Tinggal jalanin aja.", "Sejalan banget di banyak aspek.", "Hampir nggak ada yang bikin sulit.", "Nyaman, seru, dan saling paham.", "Udah kayak soulmate beneran!"],
-                100: ["Perfect match! Saling melengkapi.", "Udah kayak ditakdirin bersama.", "Hubungan ini super kuat!", "Kalian kayak puzzle yang pas banget.", "Nggak ada celah buat ragu!"]
-            };
-
-            const key = Math.floor(percentage / 10) * 10;
-            return responses[key][Math.floor(Math.random() * responses[key].length)];
-        }
-
-        window.onload = function() {
-            const nama1 = getQueryParam("nama1");
-            const nama2 = getQueryParam("nama2");
-            const percentage = getRandomPercentage();
-            const response = getRandomResponse(percentage);
-
-            document.getElementById("nama1").innerText = nama1;
-            document.getElementById("nama2").innerText = nama2;
-            document.getElementById("percentage").innerText = percentage + "%";
-            document.getElementById("response").innerText = response;
-        };
-    </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
 </head>
 <body class="bg-gray-800 flex items-center justify-center min-h-screen">
-    <div class="bg-gray-700 p-8 rounded-lg shadow-lg text-center text-white max-w-md mx-auto">
-        <h1 class="text-2xl font-bold mb-2">Cupid Meter</h1>
-        <p class="text-lg mb-4">Persentase kecocokan <span id="nama1" class="font-bold text-pink-400"></span> & <span id="nama2" class="font-bold text-pink-400"></span></p>
-        <div class="flex items-center justify-center mb-4">
-            <i class="fas fa-heart text-pink-500 text-6xl"></i>
-            <span id="percentage" class="text-6xl font-bold ml-4"></span>
-        </div>
-        <p id="response" class="text-sm"></p>
+  <div id="card" class="bg-gray-700 p-8 rounded-lg shadow-lg text-center text-white max-w-md mx-auto">
+    <h1 class="text-2xl font-bold mb-2">Cupid Meter</h1>
+    <p id="names" class="text-lg mb-4"></p>
+    <div class="flex items-center justify-center mb-4">
+      <i class="fas fa-heart text-pink-500 text-6xl"></i>
+      <span id="percent" class="text-6xl font-bold ml-4"></span>
     </div>
+    <p id="response" class="text-sm"></p>
+  </div>
+  <script>
+    function getHashParams() {
+      const hash = window.location.hash.substring(1);
+      const params = {};
+      hash.split('&').forEach(pair => {
+        const [key, value] = pair.split('=');
+        if(key && value) params[key] = decodeURIComponent(value);
+      });
+      return params;
+    }
+    const params = getHashParams();
+    const nama1 = params.nama1 || "Nama1";
+    const nama2 = params.nama2 || "Nama2";
+    document.getElementById('names').innerHTML = `Persentase kecocokan <span class="font-bold text-pink-400">${nama1}</span> & <span class="font-bold text-pink-400">${nama2}</span>`;
+    let randomValue = Math.floor(Math.random() * 100) + 1;
+    document.getElementById('percent').textContent = randomValue + "%";
+    let bucket = Math.ceil(randomValue / 10) * 10;
+    let responses = {
+      10: [
+        "Hmm, ini kayaknya nggak cocok deh, coba deketin lagi.",
+        "Yah, sepertinya chemistry kalian kurang, tapi siapa tahu bisa berkembang.",
+        "Cuma 10%, mungkin bukan jodoh tapi masih bisa jadi teman.",
+        "Low key vibes-nya belum nyambung, santai aja dulu.",
+        "Duh, pas 10% nih. Mungkin kalian butuh waktu untuk ngeklik."
+      ],
+      20: [
+        "20%? Masih perlu effort biar makin klop.",
+        "Kurang greget, tapi bisa jadi awal yang lucu.",
+        "Sedikit lagi biar terasa chemistry yang nyata.",
+        "20% tuh, masih ada ruang buat improvement.",
+        "Belum menyala, tapi tetap ada potensi."
+      ],
+      30: [
+        "30% artinya ada secercah harapan, asal jangan dipaksain.",
+        "Lumayan, tapi belum cukup menyala.",
+        "Cukup receh, bisa jadi bahan candaan.",
+        "Ada potensi, asal diberi waktu.",
+        "Mulai terlihat, tapi masih jauh dari ideal."
+      ],
+      40: [
+        "40%? Lumayan lah, coba kenalan lebih dalam.",
+        "Mendekati, tapi belum klik total.",
+        "Bisa dibilang setengah-setengah, coba lagi!",
+        "Masih butuh pemanasan, tapi ada peluang.",
+        "Cukup menarik, asal jangan dipaksain."
+      ],
+      50: [
+        "50/50, namanya juga adil, bisa jadi menarik.",
+        "Seimbang, ada plus minusnya masing-masing.",
+        "Setengah jalan, bisa makin mantep kalo diberi kesempatan.",
+        "Lumayan, tapi perlu usaha lebih.",
+        "Bisa jadi, asal kalian mau mencoba."
+      ],
+      60: [
+        "60% artinya udah lumayan, coba deketin lebih santai.",
+        "Ada chemistry, tapi belum full on.",
+        "Menjanjikan, asal jangan dibuat ribet.",
+        "Udah mulai asik, keep it casual aja.",
+        "Lumayan banget, boleh dicoba."
+      ],
+      70: [
+        "70%? Wah, udah lumayan keren nih!",
+        "Mendekati jodoh, coba eksplor lebih dalam.",
+        "Asik, chemistry kalian keliatan!",
+        "Cocok, tapi santai aja dulu.",
+        "Udah deket, tinggal makin deket lagi."
+      ],
+      80: [
+        "80% tuh, udah hampir sempurna!",
+        "Keren, chemistry kalian terasa banget.",
+        "Udah jodoh deh, asal dijaga aja.",
+        "Cocok banget, vibes positif terus!",
+        "Udah klik, tinggal terusin aja."
+      ],
+      90: [
+        "90%? Mantap, kalian tuh kayak destinasi jodoh!",
+        "Hampir sempurna, vibes kalian luar biasa.",
+        "Cocok parah, tinggal polesan dikit aja.",
+        "Udah kayak soulmate, terusin aja!",
+        "Gokil, chemistry kalian hampir nggak terbantahkan."
+      ],
+      100: [
+        "100%! Wah, bener-bener serasi!",
+        "Jodoh banget, udah kayak kisah dongeng.",
+        "Sempurna, kalian tuh destiny yang nyata.",
+        "Udah jelas, chemistry kalian on fire!",
+        "Tak terbantahkan, kalian memang dibuat untuk bersama."
+      ]
+    };
+    let chosenResponse = "";
+    if(bucket === 10) {
+      chosenResponse = responses[10][Math.floor(Math.random() * responses[10].length)];
+    } else if(bucket === 20) {
+      chosenResponse = responses[20][Math.floor(Math.random() * responses[20].length)];
+    } else if(bucket === 30) {
+      chosenResponse = responses[30][Math.floor(Math.random() * responses[30].length)];
+    } else if(bucket === 40) {
+      chosenResponse = responses[40][Math.floor(Math.random() * responses[40].length)];
+    } else if(bucket === 50) {
+      chosenResponse = responses[50][Math.floor(Math.random() * responses[50].length)];
+    } else if(bucket === 60) {
+      chosenResponse = responses[60][Math.floor(Math.random() * responses[60].length)];
+    } else if(bucket === 70) {
+      chosenResponse = responses[70][Math.floor(Math.random() * responses[70].length)];
+    } else if(bucket === 80) {
+      chosenResponse = responses[80][Math.floor(Math.random() * responses[80].length)];
+    } else if(bucket === 90) {
+      chosenResponse = responses[90][Math.floor(Math.random() * responses[90].length)];
+    } else if(bucket === 100) {
+      chosenResponse = responses[100][Math.floor(Math.random() * responses[100].length)];
+    }
+    document.getElementById('response').textContent = chosenResponse;
+  </script>
 </body>
 </html>
