@@ -33,7 +33,9 @@
     document.getElementById('names').innerHTML = `Persentase kecocokan <span class="font-bold text-pink-400">${nama1}</span> & <span class="font-bold text-pink-400">${nama2}</span>`;
     let randomValue = Math.floor(Math.random() * 100) + 1;
     document.getElementById('percent').textContent = randomValue + "%";
-    let bucket = Math.ceil(randomValue / 10) * 10;
+    let bucket = Math.round(randomValue / 10) * 10;
+    if(bucket < 10) bucket = 10;
+    if(bucket > 100) bucket = 100;
     let responses = {
       10: [
         "Hmm, ini kayaknya nggak cocok deh, coba deketin lagi.",
@@ -106,28 +108,7 @@
         "Tak terbantahkan, kalian memang dibuat untuk bersama."
       ]
     };
-    let chosenResponse = "";
-    if(bucket === 10) {
-      chosenResponse = responses[10][Math.floor(Math.random() * responses[10].length)];
-    } else if(bucket === 20) {
-      chosenResponse = responses[20][Math.floor(Math.random() * responses[20].length)];
-    } else if(bucket === 30) {
-      chosenResponse = responses[30][Math.floor(Math.random() * responses[30].length)];
-    } else if(bucket === 40) {
-      chosenResponse = responses[40][Math.floor(Math.random() * responses[40].length)];
-    } else if(bucket === 50) {
-      chosenResponse = responses[50][Math.floor(Math.random() * responses[50].length)];
-    } else if(bucket === 60) {
-      chosenResponse = responses[60][Math.floor(Math.random() * responses[60].length)];
-    } else if(bucket === 70) {
-      chosenResponse = responses[70][Math.floor(Math.random() * responses[70].length)];
-    } else if(bucket === 80) {
-      chosenResponse = responses[80][Math.floor(Math.random() * responses[80].length)];
-    } else if(bucket === 90) {
-      chosenResponse = responses[90][Math.floor(Math.random() * responses[90].length)];
-    } else if(bucket === 100) {
-      chosenResponse = responses[100][Math.floor(Math.random() * responses[100].length)];
-    }
+    let chosenResponse = responses[bucket][Math.floor(Math.random() * responses[bucket].length)];
     document.getElementById('response').textContent = chosenResponse;
   </script>
 </body>
