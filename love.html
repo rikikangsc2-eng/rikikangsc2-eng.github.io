@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Surprise</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            background-color: pink;
+            transition: background 0.5s ease-in-out;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            margin-top: 20vh;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        h1 {
+            color: red;
+            font-size: 2rem;
+            animation: bounce 1.5s infinite alternate ease-in-out;
+        }
+        .love-btn {
+            font-size: 22px;
+            padding: 12px 25px;
+            background-color: white;
+            border: 3px solid red;
+            color: red;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .love-btn:hover {
+            background-color: red;
+            color: white;
+            transform: scale(1.1);
+        }
+        .love-btn:active {
+            transform: scale(0.9);
+        }
+        .jumpscare {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .jumpscare video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+        .hearts {
+            position: absolute;
+            top: -50px;
+            color: red;
+            font-size: 30px;
+            opacity: 0.8;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Do you love me? ❤️</h1>
+        <button class="love-btn" onclick="showJumpscare()">Love</button>
+    </div>
+
+    <div class="jumpscare" id="jumpscare">
+        <video id="jumpscareVideo" autoplay>
+            <source src="j.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <script>
+        function createHearts() {
+            const heart = document.createElement("div");
+            heart.classList.add("hearts");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHearts, 300);
+
+        function lockFullscreen(video) {
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) {
+                video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) {
+                video.msRequestFullscreen();
+            }
+        }
+
+        function preventExit(event) {
+            event.preventDefault();
+            event.returnValue = "";
+        }
+
+        function disableKeys(event) {
+            if (event.key === "Escape" || event.key === "F11") {
+                event.preventDefault();
+            }
+        }
+
+        function showJumpscare() {
+            let jumpscare = document.getElementById("jumpscare");
+            let video = document.getElementById("jumpscareVideo");
+
+            jumpscare.style.display = "flex";
+            video.play();
+            video.controls = false;
+
+            let audio = new Audio("jumpscare.mp3");
+            audio.play();
+
+            lockFullscreen(video);
+
+            window.addEventListener("beforeunload", preventExit);
+            document.addEventListener("keydown", disableKeys);
+            video.addEventListener("ended", () => video.play());
+        }
+    </script>
+
+</body>
+</html>
