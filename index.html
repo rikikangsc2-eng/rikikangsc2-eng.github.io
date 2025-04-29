@@ -1,143 +1,248 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NirKyy: REST API Publik Gratis untuk Pengembang</title>
-    <meta name="description" content="Temukan NirKyy, REST API publik gratis yang mudah digunakan untuk berbagai kebutuhan pengembangan Anda.">
-    <meta name="keywords" content="REST API, API publik, API gratis, NirKyy, rikikangsc2-eng, pengembangan web, developer">
-    <meta name="author" content="NirKyy">
-    <link rel="canonical" href="https://github.blog/">
-    <meta property="og:title" content="NirKyy: REST API Publik Gratis untuk Pengembang">
-    <meta property="og:description" content="Temukan NirKyy, REST API publik gratis yang mudah digunakan untuk berbagai kebutuhan pengembangan Anda.">
-    <meta property="og:url" content="https://github.blog/">
-    <meta property="og:type" content="article">
-    <meta property="og:image" content="https://wordpress.com/id/support/gambar-andalan/">
-    <link rel="icon" href="https://account.ikonpass.com/" type="image/x-icon">
+    <title>Portofolio Ricky Purwanto - Pengembang Web Kreatif & Full-Stack dari Indonesia</title>
+    <meta name="description" content="Portofolio resmi Ricky Purwanto, seorang pengembang web kreatif dan full-stack dari Indonesia dengan keahlian di Node.js, PHP, HTML, CSS (Tailwind), dan JavaScript. Temukan proyek-proyek terbaru saya di sini.">
+    <meta name="keywords" content="Portofolio, Ricky Purwanto, Pengembang Web, Full-Stack, Node.js, PHP, HTML, CSS, JavaScript, Tailwind CSS, Pengembang Indonesia, Web Developer, Kreatif, Teknologi">
+    <meta name="author" content="Ricky Purwanto">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Portofolio Ricky Purwanto - Pengembang Web Kreatif & Full-Stack">
+    <meta property="og:description" content="Portofolio resmi Ricky Purwanto, seorang pengembang web kreatif dan full-stack dari Indonesia.">
+    <meta property="og:image" content="https://i.ibb.co.com/CpKQhHnS/IMG-20230811-191303.jpg">
+    <meta property="og:url" content="https://www.amazon.com/planner-padfolio/s?k=planner+padfolio">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portofolio Ricky Purwanto - Pengembang Web Kreatif & Full-Stack">
+    <meta name="twitter:description" content="Portofolio resmi Ricky Purwanto, seorang pengembang web kreatif dan full-stack dari Indonesia.">
+    <meta name="twitter:image" content="https://i.ibb.co.com/CpKQhHnS/IMG-20230811-191303.jpg">
+
+     <link rel="icon" href="https://nirkyy.koyeb.app/favicon.ico" type="image/x-icon">
+     <script src="https://cdn.tailwindcss.com?plugins=typography,aspect-ratio"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #f4f4f4;
-            color: #333;
+            padding-bottom: env(safe-area-inset-bottom, 1rem);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background-color: #0f172a;
         }
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        #hero {
+            opacity: 0;
+            transition: opacity 1s ease-out;
         }
-        h1, h2, h3 {
-            color: #0056b3;
+        #hero.is-visible {
+            opacity: 1;
         }
-        p {
-            margin-bottom: 1em;
+        main {
+           padding-top: 5rem;
         }
-        a {
-            color: #0056b3;
-            text-decoration: none;
+        @media (min-width: 768px) {
+            main {
+                padding-top: 6rem;
+            }
         }
-        a:hover {
-            text-decoration: underline;
+        #contact {
+            padding-bottom: calc(4rem + env(safe-area-inset-bottom, 0px));
         }
-        .highlight {
-            background-color: #e9ecef;
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 1em;
-            overflow-x: auto;
+        footer {
+            padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
         }
-        .code {
-            font-family: monospace;
-            color: #22863a;
+        .skill-item {
+           transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
         }
-        .api-url {
-            font-weight: bold;
-            color: #c7254e;
+        .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
-        .author-info {
-            font-size: 0.9em;
-            color: #777;
-            margin-bottom: 20px;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #777;
-            font-size: 0.8em;
-        }
-        /* Tambahkan gaya CSS kustom Anda di sini untuk tampilan yang lebih keren */
     </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyan: {
+                            50: '#ecfeff',
+                            100: '#cffafe',
+                            200: '#a5f3fc',
+                            300: '#67e8f9',
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            700: '#0e7490',
+                            800: '#155e75',
+                            900: '#164e63',
+                            950: '#083344',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>🚀 Memperkenalkan NirKyy: REST API Publik Gratis untuk Semua Pengembang!</h1>
-            <p class="author-info">Dipublikasikan oleh Nirkyy Dev pada 16, mar, 2025</p>
-        </header>
+<body class="bg-gradient-to-b from-gray-900 to-slate-950 text-gray-200 font-sans antialiased overflow-x-hidden">
 
-        <section>
-            <p>Halo para pengembang yang hebat! Saya sangat gembira untuk mengumumkan peluncuran proyek terbaru saya: <a href="https://NirKyy.koyeb.app" target="_blank" rel="noopener noreferrer">NirKyy</a>, sebuah REST API publik yang sepenuhnya gratis dan dirancang untuk membantu Anda dalam berbagai proyek pengembangan Anda.</p>
-
-            <h2>Apa Itu NirKyy?</h2>
-            <p>NirKyy adalah kumpulan endpoint API yang menyediakan berbagai fungsi dan data yang dapat Anda integrasikan dengan mudah ke dalam aplikasi web, aplikasi seluler, atau proyek perangkat lunak lainnya. Tujuan utama saya adalah untuk menyediakan sumber daya yang berguna dan mudah diakses bagi komunitas pengembang, tanpa biaya sepeser pun.</p>
-
-            <h2>Mengapa Menggunakan NirKyy?</h2>
-            <ul>
-                <li><strong>Gratis Sepenuhnya:</strong> Tidak ada biaya berlangganan atau batasan penggunaan (dalam batas wajar).</li>
-                <li><strong>Mudah Digunakan:</strong> Dirancang dengan fokus pada kesederhanaan dan kemudahan integrasi.</li>
-                <li><strong>Berbagai Fungsi:</strong> Menyediakan berbagai endpoint untuk memenuhi kebutuhan pengembangan yang berbeda.</li>
-                <li><strong>Dokumentasi Jelas:</strong> Dokumentasi yang lengkap dan mudah dipahami akan segera tersedia (atau sudah tersedia di <a href="https://NirKyy.koyeb.app" target="_blank" rel="noopener noreferrer">NirKyy.koyeb.app</a>).</li>
-                <li><strong>Komunitas Mendukung:</strong> Saya akan terus mengembangkan dan meningkatkan NirKyy berdasarkan umpan balik dari komunitas.</li>
+    <header class="bg-gray-800/80 backdrop-blur-sm shadow-lg py-4 fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-extrabold text-cyan-400">Ricky Purwanto</a>
+            <nav>
+                <ul class="hidden md:flex space-x-6">
+                    <li><a href="#about" class="hover:text-cyan-400 transition duration-300 font-semibold text-gray-300">Tentang</a></li>
+                    <li><a href="#skills" class="hover:text-cyan-400 transition duration-300 font-semibold text-gray-300">Keahlian</a></li>
+                    <li><a href="#projects" class="hover:text-cyan-400 transition duration-300 font-semibold text-gray-300">Proyek</a></li>
+                    <li><a href="#contact" class="hover:text-cyan-400 transition duration-300 font-semibold text-gray-300">Kontak</a></li>
+                </ul>
+                 <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </nav>
+        </div>
+         <div id="mobile-menu" class="hidden md:hidden bg-gray-800/95 backdrop-blur-sm mt-2">
+            <ul class="flex flex-col items-center space-y-4 py-4">
+                 <li><a href="#about" class="block hover:text-cyan-400 transition duration-300 font-semibold text-gray-300 px-4 py-2">Tentang</a></li>
+                <li><a href="#skills" class="block hover:text-cyan-400 transition duration-300 font-semibold text-gray-300 px-4 py-2">Keahlian</a></li>
+                <li><a href="#projects" class="block hover:text-cyan-400 transition duration-300 font-semibold text-gray-300 px-4 py-2">Proyek</a></li>
+                <li><a href="#contact" class="block hover:text-cyan-400 transition duration-300 font-semibold text-gray-300 px-4 py-2">Kontak</a></li>
             </ul>
+        </div>
+    </header>
 
-            <h2>Contoh Penggunaan NirKyy</h2>
-            <p>Berikut adalah beberapa contoh bagaimana Anda dapat menggunakan NirKyy dalam proyek Anda:</p>
+    <main class="container mx-auto px-4 py-8">
 
-            <h3>Mendapatkan Data Acak</h3>
-            <p>Anda dapat menggunakan endpoint ini untuk mendapatkan data acak untuk keperluan pengujian atau demonstrasi.</p>
-            <div class="highlight">
-                <span class="code">
-                    <span class="api-url">GET</span> <a href="https://nirkyy.koyeb.app/api/v1/susunkata" target="_blank" rel="noopener noreferrer">https://nirkyy.koyeb.app/api/v1/susunkata</a>
-                </span>
-            </div>
-            <p>Contoh respons:</p>
-            <div class="highlight">
-                <pre class="code">{
-  "author": "NirKyy",
-  "success": true,
-  "data": {
-    "index": 328,
-    "soal": "A-L-A-N-Y-E-P",
-    "tipe": "Pekerjaan",
-    "jawaban": "PELAYAN"
-  }
-}
-                </pre>
-            </div>
-            <p>Itu hanya sebatas sample dari API nirkyy masih banyak fitur menarik lainya dan nantikan update selanjutnya</p>
-            <p>Pastikan untuk menyertakan contoh URL API dan contoh respons dalam format JSON atau format lain yang relevan.</p>
-
-            <h2>Bagaimana Cara Memulai?</h2>
-            <p>Sangat mudah untuk mulai menggunakan NirKyy! Anda hanya perlu mengirimkan permintaan HTTP ke endpoint yang tersedia. Anda dapat menggunakan alat seperti <a href="https://insomnia.rest/" target="_blank" rel="noopener noreferrer">Insomnia</a>, <a href="https://www.postman.com/" target="_blank" rel="noopener noreferrer">Postman</a>, atau langsung melalui kode program Anda.</p>
-            <p>Jangan lupa untuk membaca dokumentasi lengkap API di <a href="https://NirKyy.koyeb.app" target="_blank" rel="noopener noreferrer">NirKyy.koyeb.app</a> untuk informasi lebih detail tentang semua endpoint yang tersedia, parameter yang diperlukan, dan contoh penggunaan yang lebih mendalam.</p>
-
-            <h2>Kontribusi dan Umpan Balik</h2>
-            <p>Saya sangat terbuka untuk menerima umpan balik dan kontribusi dari komunitas. Jika Anda memiliki ide untuk endpoint baru, menemukan bug, atau ingin membantu meningkatkan dokumentasi, jangan ragu untuk menghubungi saya melalui <a href = "https://wa.me/6283894391287">WhatsApp</a>.</p>
-
-            <h2>Kesimpulan</h2>
-            <p>Saya berharap NirKyy dapat menjadi sumber daya yang berharga bagi Anda dalam proyek pengembangan Anda. Jangan ragu untuk mencoba API ini dan berikan saya tahu pendapat Anda! Mari kita bangun aplikasi yang hebat bersama-sama!</p>
-
-            <p>Kunjungi <a href="https://NirKyy.koyeb.app" target="_blank" rel="noopener noreferrer">NirKyy.koyeb.app</a> sekarang dan mulailah berkreasi!</p>
+        <section id="hero" class="text-center py-24 md:py-36 lg:py-48 flex flex-col items-center opacity-0">
+            <img src="https://i.ibb.co.com/CpKQhHnS/IMG-20230811-191303.jpg" alt="Foto Ricky Purwanto" class="w-40 h-40 rounded-full mx-auto mb-8 object-cover shadow-xl ring-4 ring-cyan-500/50 transform transition-transform duration-500 hover:scale-105" data-aos="zoom-in" data-aos-delay="300">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white tracking-tight" data-aos="fade-up" data-aos-delay="400">Halo, Saya Ricky Purwanto</h1>
+            <p class="text-xl md:text-2xl text-cyan-300 mb-10 font-light" data-aos="fade-up" data-aos-delay="500">Pengembang Web Kreatif & Full-Stack</p>
+            <a href="#projects" class="bg-gradient-to-r from-cyan-500 to-cyan-600 text-white px-10 py-4 rounded-full text-lg font-semibold hover:from-cyan-600 hover:to-cyan-700 transition duration-300 shadow-lg hover:shadow-cyan-500/40 hover:shadow-xl transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="600">Lihat Karya Saya</a>
         </section>
 
-        <footer>
-            <p class="footer">Hak Cipta © 2025 oleh Nirkyy Dev. Semua hak dilindungi undang-undang.</p>
-            <p class="footer">API di jalankan melalui <a href="https://koyeb.com/" target="_blank" rel="noopener noreferrer">Koyeb</a>.</p>
-        </footer>
-    </div>
+        <section id="about" class="py-20 md:py-28 border-t border-gray-700/50" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white" data-aos="fade-up">Tentang Saya</h2>
+            <div class="max-w-3xl mx-auto text-lg text-gray-300 leading-relaxed space-y-6" data-aos="fade-up" data-aos-delay="100">
+                <p>Saya adalah seorang pengembang web dari Indonesia dengan passion untuk menciptakan solusi digital yang <span class="font-semibold text-cyan-400">inovatif</span>, <span class="font-semibold text-cyan-400">efisien</span>, dan <span class="font-semibold text-cyan-400">estetik</span>. Saya menikmati proses membangun aplikasi web dari awal hingga akhir.</p>
+                <p>Keahlian saya mencakup pengembangan <span class="font-semibold text-cyan-400">Frontend</span> dan <span class="font-semibold text-cyan-400">Backend</span>. Saya terampil dalam menggunakan <span class="font-semibold text-cyan-400">Node.js</span> untuk membangun API dan layanan backend yang tangguh, serta <span class="font-semibold text-cyan-400">HTML</span>, <span class="font-semibold text-cyan-400">CSS (Tailwind CSS)</span>, dan <span class="font-semibold text-cyan-400">JavaScript</span> untuk menciptakan antarmuka pengguna yang interaktif dan responsif.</p>
+                <p>Di luar pekerjaan, saya gemar mengeksplorasi teknologi baru dalam ekosistem <span class="font-semibold text-cyan-400">Node.js</span>, terus belajar, dan berkontribusi pada proyek open-source. Saya percaya pada kekuatan kode untuk memecahkan masalah dan menciptakan pengalaman pengguna yang luar biasa.</p>
+            </div>
+        </section>
+
+         <section id="skills" class="py-20 md:py-28 border-t border-gray-700/50">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-white" data-aos="fade-up">Keahlian Teknologi</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 max-w-5xl mx-auto">
+                <div class="skill-item bg-gray-800 rounded-xl shadow-md p-6 text-center hover:bg-gray-700 hover:shadow-cyan-500/30 hover:shadow-lg hover:-translate-y-2" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fab fa-node-js text-6xl text-green-400 mb-4"></i>
+                    <p class="text-xl font-semibold">Node.js</p>
+                </div>
+                 <div class="skill-item bg-gray-800 rounded-xl shadow-md p-6 text-center hover:bg-gray-700 hover:shadow-cyan-500/30 hover:shadow-lg hover:-translate-y-2" data-aos="zoom-in" data-aos-delay="150">
+                    <i class="fab fa-php text-6xl text-indigo-400 mb-4"></i>
+                    <p class="text-xl font-semibold">PHP</p>
+                </div>
+                 <div class="skill-item bg-gray-800 rounded-xl shadow-md p-6 text-center hover:bg-gray-700 hover:shadow-cyan-500/30 hover:shadow-lg hover:-translate-y-2" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fab fa-html5 text-6xl text-orange-500 mb-4"></i>
+                    <p class="text-xl font-semibold">HTML5</p>
+                </div>
+                 <div class="skill-item bg-gray-800 rounded-xl shadow-md p-6 text-center hover:bg-gray-700 hover:shadow-cyan-500/30 hover:shadow-lg hover:-translate-y-2" data-aos="zoom-in" data-aos-delay="250">
+                    <i class="fab fa-css3-alt text-6xl text-blue-500 mb-4"></i>
+                    <p class="text-xl font-semibold">CSS3</p>
+                </div>
+                 <div class="skill-item bg-gray-800 rounded-xl shadow-md p-6 text-center hover:bg-gray-700 hover:shadow-cyan-500/30 hover:shadow-lg hover:-translate-y-2" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fab fa-js text-6xl text-yellow-400 mb-4"></i>
+                    <p class="text-xl font-semibold">JavaScript</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20 md:py-28 border-t border-gray-700/50">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-white" data-aos="fade-up">Proyek Unggulan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                <div class="project-card bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl hover:shadow-cyan-500/20 hover:scale-[1.03]" data-aos="fade-up" data-aos-delay="100">
+                     <img src="https://nirkyy.koyeb.app/favicon.ico" alt="Thumbnail Proyek Nirkyy" class="w-full aspect-video object-contain bg-gray-700 p-4">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-3">Nirkyy Web</h3>
+                        <p class="text-gray-400 mb-5 leading-relaxed">Project yang di Buat oleh Saya dan Nirkyy.</p>
+                        <a href="https://nirkyy.rf.gd" target="_blank" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-semibold group">
+                            Kunjungi Situs
+                            <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+                 <div class="project-card bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl hover:shadow-cyan-500/20 hover:scale-[1.03]" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-full aspect-video bg-gray-700 flex items-center justify-center">
+                         <i class="fas fa-code text-6xl text-gray-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-3">Proyek Berikutnya</h3>
+                        <p class="text-gray-400 mb-5 leading-relaxed">Saya terus berinovasi dan mencoba hal hal yang baru, Jadi nantikan pembaruannya!</p>
+                        <span class="inline-block text-gray-500 font-semibold italic">Segera Hadir...</span>
+                    </div>
+                </div>
+        </section>
+
+        <section id="contact" class="py-20 md:py-28 border-t border-gray-700/50">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white" data-aos="fade-up">Mari Terhubung</h2>
+            <p class="text-xl text-gray-300 text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Saya selalu terbuka untuk diskusi, kolaborasi, atau sekadar bertukar sapa. Jangan ragu menghubungi saya melalui kanal berikut:</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-10" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://wa.me/6283894391287?text=Halo%20Ricky,%20saya%20tertarik%20untuk%20berbicara%20lebih%20lanjut." target="_blank" class="flex items-center text-lg text-gray-300 hover:text-green-400 transition duration-300 group">
+                    <i class="fab fa-whatsapp text-green-500 text-3xl mr-3 transform transition-transform duration-300 group-hover:scale-110"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="mailto:rikipurpur98@gmail.com" class="flex items-center text-lg text-gray-300 hover:text-red-400 transition duration-300 group">
+                    <i class="fas fa-envelope text-red-500 text-3xl mr-3 transform transition-transform duration-300 group-hover:scale-110"></i>
+                    <span>Email</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-transparent py-8 mt-12">
+        <div class="container mx-auto px-4 text-center text-gray-500">
+            <p>© 2024 Ricky Purwanto. Dirancang dengan <i class="fas fa-heart text-red-500"></i> dan Kode.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-out-quad',
+            offset: 50,
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const hero = document.getElementById('hero');
+            if (hero) {
+                 setTimeout(() => {
+                    hero.classList.add('is-visible');
+                }, 100);
+            }
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = mobileMenu.querySelectorAll('a');
+
+             mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuButton.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    const icon = mobileMenuButton.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
+
