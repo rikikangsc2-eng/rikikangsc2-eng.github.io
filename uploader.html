@@ -3,33 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Direct Imgur Uploader Form</title>
+    <title>AceIMG Uploader Form</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
     </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h1 class="text-2xl font-bold text-center mb-6">Upload File via HTML Form</h1>
+        <h1 class="text-2xl font-bold text-center mb-6">Upload File to AceIMG</h1>
 
-        <form action="https://uploadimgur.com/upload" method="post" enctype="multipart/form-data" target="_blank">
+        <form action="https://api.aceimg.com/api/upload" method="post" enctype="multipart/form-data" target="_blank">
 
             <div class="mb-4">
                 <label for="fileInput" class="block text-gray-700 text-sm font-bold mb-2">
                     Choose File:
                 </label>
-                <input type="file" id="fileInput" name="image" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
+                <input type="file" id="fileInput" name="file" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" required>
             </div>
 
-            <button type="submit" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
+            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
                 Upload File
             </button>
         </form>
-
-        <div class="mt-6 text-center text-sm text-red-600">
-            <p><strong>Catatan Penting:</strong> Menggunakan form langsung seperti ini akan mengirim file ke Imgur, tetapi Anda <strong>tidak akan bisa membaca respons</strong> (seperti URL gambar yang diunggah) di halaman ini karena kebijakan keamanan browser (Same-Origin Policy), kecuali jika Imgur mengizinkannya melalui CORS.</p>
-            <p>Respons dari Imgur (jika ada) kemungkinan akan ditampilkan di tab baru jika Anda menggunakan `target="_blank"`.</p>
-        </div>
     </div>
 </body>
 </html>
